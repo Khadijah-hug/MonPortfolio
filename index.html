@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Khadidiatou Kane Koulibaly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace']
+                    },
+                    colors: {
+                        primary: {
+                            DEFAULT: '#6366f1',
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81'
+                        },
+                        accent: {
+                            DEFAULT: '#06b6d4',
+                            50: '#ecfeff',
+                            100: '#cffafe',
+                            200: '#a5f3fc',
+                            300: '#67e8f9',
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            700: '#0e7490',
+                            800: '#155e75',
+                            900: '#164e63'
+                        },
+                        dark: {
+                            bg: '#0f172a',
+                            surface: '#1e293b',
+                            card: '#334155',
+                            text: '#f8fafc'
+                        }
+                    },
+                    animation: {
+                        'gradient': 'gradient 8s ease infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'morph': 'morph 8s ease-in-out infinite',
+                        'typing': 'typing 3.5s steps(40, end), blink .75s step-end infinite'
+                    },
+                    keyframes: {
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        morph: {
+                            '0%, 100%': { borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' },
+                            '25%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%' },
+                            '50%': { borderRadius: '40% 60% 30% 70% / 60% 40% 70% 30%' },
+                            '75%': { borderRadius: '60% 40% 70% 30% / 30% 60% 40% 70%' }
+                        },
+                        typing: {
+                            '0%': { width: '0' },
+                            '100%': { width: '100%' }
+                        },
+                        blink: {
+                            '0%, 100%': { borderColor: 'transparent' },
+                            '50%': { borderColor: 'currentColor' }
+                        }
+                    }
+                }
+            }
+        };
+
+        
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Space+Mono&display=swap');
+        
+       
+        body {
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(-45deg, #6366f1, #8b5cf6, #06b6d4, #3b82f6);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glassmorphism {
+            background: rgba(15, 23, 42, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .morph-image {
+            animation: morph 8s ease-in-out infinite;
+        }
+        
+        .clip-path-down {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+        }
+        
+        .clip-path-up {
+            clip-path: polygon(0 15%, 50% 0, 100% 15%, 100% 100%, 0 100%);
+        }
+        
+        
+        .reveal {
+            position: relative;
+            opacity: 0;
+            transition: all 1s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+        }
+        
+        .reveal.fade-bottom {
+            transform: translateY(100px);
+        }
+        
+        .reveal.fade-bottom.active {
+            transform: translateY(0);
+        }
+        
+        .reveal.fade-left {
+            transform: translateX(-100px);
+        }
+        
+        .reveal.fade-left.active {
+            transform: translateX(0);
+        }
+        
+        .reveal.fade-right {
+            transform: translateX(100px);
+        }
+        
+        .reveal.fade-right.active {
+            transform: translateX(0);
+        }
+        
+       
+        .progress-bar {
+            width: 0;
+            transition: width 1.5s ease-out;
+        }
+        
+       
+        .glow {
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5), 0 0 20px rgba(99, 102, 241, 0.3), 0 0 30px rgba(99, 102, 241, 0.1);
+            transition: box-shadow 0.5s ease;
+        }
+        
+        .dark .glow {
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5), 0 0 20px rgba(99, 102, 241, 0.3), 0 0 30px rgba(99, 102, 241, 0.1);
+        }
+        
+        .glow:hover {
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.6), 0 0 30px rgba(99, 102, 241, 0.4), 0 0 45px rgba(99, 102, 241, 0.2);
+        }
+        
+       
+        .typing-container {
+            display: inline-block;
+        }
+        
+        .typing-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid;
+            animation: typing 3.5s steps(40, end), blink 0.75s step-end infinite;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: currentColor }
+        }
+        
+       
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(99, 102, 241, 0.5);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, background-color 0.3s;
+            mix-blend-mode: difference;
+        }
+        
+       
+        .menu-trigger {
+            position: relative;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .menu-trigger span {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: currentColor;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-trigger span:nth-child(1) {
+            top: 0;
+        }
+        
+        .menu-trigger span:nth-child(2) {
+            top: 9px;
+        }
+        
+        .menu-trigger span:nth-child(3) {
+            top: 18px;
+        }
+        
+        .menu-open .menu-trigger span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        
+        .menu-open .menu-trigger span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-open .menu-trigger span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        .dark ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #6366f1;
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4f46e5;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-dark-bg dark:text-dark-text antialiased font-sans">
+    <div id="cursor" class="custom-cursor"></div>
+
+   
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+             
+                <a href="#hero" class="text-2xl font-bold font-heading text-primary-600 dark:text-primary-400 flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center text-white">KK</span>
+                    <span>Khadidiatou</span>
+                </a>
+                
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300">À propos</a>
+                    <a href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300">Projets</a>
+                    <a href="#skills" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300">Compétences</a>
+                    <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300">Contact</a>
+                    <button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                </div>
+                
+              
+                <div class="md:hidden flex items-center">
+                    <button id="menu-toggle" class="menu-trigger text-gray-700 dark:text-gray-300">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+            
+           
+            <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-dark-surface shadow-lg rounded-lg mt-4 transition-all duration-300 p-5">
+                <div class="flex flex-col space-y-4">
+                    <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 p-2">À propos</a>
+                    <a href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 p-2">Projets</a>
+                    <a href="#skills" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 p-2">Compétences</a>
+                    <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 p-2">Contact</a>
+                    <button id="mobile-theme-toggle" class="flex items-center justify-between text-gray-700 dark:text-gray-300 p-2">
+                        <span>Thème</span>
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300">
+                            <i class="fas fa-moon dark:hidden"></i>
+                            <i class="fas fa-sun hidden dark:block"></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+   
+    <section id="hero" class="min-h-screen pt-24 flex items-center gradient-bg">
+        <div class="container mx-auto px-4 md:px-6 relative z-10 py-20">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="md:w-1/2 text-white animate__animated animate__fadeInUp">
+                    <div class="mb-4 inline-flex items-center px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm">
+                        <span class="w-3 h-3 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                        <span class="font-mono text-sm">ETUDIANTE</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Bonjour, je suis <br>
+                        <span class="text-accent-400 typing-text">Khadidiatou Kane Koulibaly</span>
+                    </h1>
+                    <p class="text-lg md:text-xl opacity-50 mb-8 max-w-xl">
+                        Étudiante en génie informatique passionnée par la protection des systèmes et réseaux informatiques contre les menaces cybernétiques.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#contact" class="px-8 py-3 bg-white text-primary-700 font-medium rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 shadow-lg">
+                            Me contacter
+                        </a>
+                        <a href="#projects" class="px-8 py-3 bg-transparent border-2 border-white text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1">
+                            Voir mes projets
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-end animate__animated animate__fadeInRight">
+                    <div class="relative">
+                        <div class="absolute -inset-0.5 bg-gradient-to-r from-primary-600 to-accent-500 rounded-full blur-xl opacity-70 animate-pulse"></div>
+                        <div class="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden relative z-10 border-4 border-white/20">
+                            <div class="absolute inset-0 bg-gradient-to-b from-primary-600/20 to-accent-500/20 z-10"></div>
+                            <img src="MON IMAGE.jpg" alt="Khadidiatou Kane Koulibaly" class="w-full h-full object-cover morph-image">
+                        </div>
+                        <div class="absolute -bottom-5 -right-5 w-20 h-20 bg-accent-400 rounded-full flex items-center justify-center text-white font-mono">
+                            <div class="text-center">
+                                <div class="font-bold text-2xl">5+</div>
+                                <div class="text-xs">Projets</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+           
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate__animated animate__fadeIn animate__delay-1s">
+                <span class="text-white/80 mb-2 text-sm">Défiler vers le bas</span>
+                <div class="w-8 h-12 border-2 border-white/50 rounded-full flex justify-center p-1">
+                    <div class="w-1.5 h-1.5 bg-white rounded-full animate-bounce"></div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="hidden md:block absolute top-0 left-0 w-full h-full overflow-hidden">
+            <div class="absolute top-[15%] left-[15%] w-32 h-32 bg-primary-300/20 rounded-full blur-xl"></div>
+            <div class="absolute top-[45%] left-[80%] w-40 h-40 bg-accent-400/20 rounded-full blur-xl"></div>
+            <div class="absolute top-[75%] left-[30%] w-36 h-36 bg-primary-600/20 rounded-full blur-xl"></div>
+        </div>
+    </section>
+
+    
+    <section id="about" class="py-20 bg-white dark:bg-dark-surface relative">
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="flex flex-col md:flex-row gap-16 items-center">
+                <div class="md:w-1/2 reveal fade-right">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-primary-500/20 to-accent-500/20 rounded-lg transform -rotate-6 shadow-xl"></div>
+                        <div class="relative bg-gray-100 dark:bg-dark-card p-8 rounded-lg shadow-lg transform rotate-3 z-10">
+                            <h3 class="text-2xl font-heading font-bold text-gray-800 dark:text-white mb-4 flex items-center">
+                                <i class="fas fa-user-shield text-primary-500 mr-3"></i> Parcours professionnel
+                            </h3>
+                            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                                Passionnée par la <span class="font-semibold text-primary-600 dark:text-primary-400">Cybersécurité</span>,
+                                j'aime explorer de nouvelles technologies et acquérir des compétences pratiques pour relever des défis concrets.
+                            </p>
+                            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                                Au cours de mes études, j'ai développé des compétences en <span class="font-semibold text-primary-600 dark:text-primary-400">Kali Linux</span> et <span class="font-semibold text-primary-600 dark:text-primary-400">Linux</span>
+                                et je travaille sur des projets pour renforcer mes connaissances en analyse de vulnérabilités,
+                                sécurité des réseaux, et gestion des incidents de sécurité.
+                            </p>
+                            <div class="mt-6 flex flex-col space-y-3">
+                                <div class="flex items-center">
+                                    <i class="fas fa-graduation-cap text-accent-500 mr-3 w-6"></i>
+                                    <span class="text-gray-700 dark:text-gray-300">Étudiante en Génie Informatique à UNIPRO</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-briefcase text-accent-500 mr-3 w-6"></i>
+                                    <span class="text-gray-700 dark:text-gray-300">Spécialisation en Cybersécurité</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-accent-500 mr-3 w-6"></i>
+                                    <span class="text-gray-700 dark:text-gray-300">Dakar, Sénégal</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 reveal fade-left">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800 dark:text-white">
+                        <span class="relative inline-block">
+                            <span class="absolute bottom-0 left-0 right-0 h-3 bg-accent-400/30 transform -skew-x-12"></span>
+                            <span class="relative">À propos de moi</span>
+                        </span>
+                    </h2>
+                    <div class="mb-8">
+                        <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                            Bonjour ! Je m'appelle <span class="font-semibold text-primary-600 dark:text-primary-400">Khadidiatou Kane Koulibaly</span> et je suis actuellement étudiante en Génie Informatique à UNIPRO.
+                        </p>
+                        <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                            Je me spécialise dans la protection des systèmes et des données contre les cybermenaces. Mon objectif est de devenir une <span class="font-semibold text-primary-600 dark:text-primary-400">experte en cybersécurité</span>, contribuer à la protection des organisations, et participer à la lutte contre la cybercriminalité.
+                        </p>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Ce qui me passionne</h3>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center p-3 bg-gray-100 dark:bg-dark-card rounded-lg">
+                            <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400 mr-3">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <span class="text-gray-700 dark:text-gray-300">Sécurité Réseau</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-gray-100 dark:bg-dark-card rounded-lg">
+                            <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400 mr-3">
+                                <i class="fas fa-bug"></i>
+                            </div>
+                            <span class="text-gray-700 dark:text-gray-300">Tests d'intrusion</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-gray-100 dark:bg-dark-card rounded-lg">
+                            <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400 mr-3">
+                                <i class="fas fa-terminal"></i>
+                            </div>
+                            <span class="text-gray-700 dark:text-gray-300">Kali Linux</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-gray-100 dark:bg-dark-card rounded-lg">
+                            <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400 mr-3">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <span class="text-gray-700 dark:text-gray-300">Analyse forensique</span>
+                        </div>
+                    </div>
+                    
+                    <a href="mon cv.pdf" download class="group inline-flex items-center gap-2 px-6 py-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
+                        <i class="fas fa-download group-hover:animate-bounce"></i>
+                        <span>Télécharger mon CV</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+       
+        <div class="hidden md:block absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary-50/30 to-transparent dark:from-primary-900/5"></div>
+        <div class="hidden md:block absolute bottom-0 left-0">
+            <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-primary-100 dark:text-primary-900/10">
+                <circle cx="100" cy="100" r="80" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="10 10" />
+                <circle cx="100" cy="100" r="40" stroke="currentColor" stroke-width="2" fill="none" />
+            </svg>
+        </div>
+    </section>
+
+   
+    <section id="projects" class="py-20 bg-gray-50 dark:bg-dark-bg relative clip-path-down">
+        <div class="container mx-auto px-4 md:px-6 pt-10 pb-20">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800 dark:text-white">
+                    <span class="relative inline-block">
+                        <span class="absolute bottom-0 left-0 right-0 h-3 bg-primary-400/30 transform -skew-x-12"></span>
+                        <span class="relative">Mes Projets</span>
+                    </span>
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Découvrez les projets sur lesquels j'ai travaillé, mettant en valeur mes compétences et ma créativité.
+                </p>
+            </div>
+            
+           
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+               
+                <div class="group bg-white dark:bg-dark-card overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 reveal fade-bottom">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="BOUSHRA.jpg" alt="Projet BOUSHRA" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+                            <span class="inline-block px-5 py-1 bg-primary-600 text-white rounded-full text-xs font-semibold mb-2 self-start">
+                                E-commerce
+                            </span>
+                            <h3 class="text-xl text-white font-bold mb-1">Projet BOUSHRA</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                            Projet BOUSHRA
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            BUSHRA est une marque qui vise à offrir des vêtements simples, confortables et abordables pour tout le monde. En se concentrant sur des designs intemporels et une qualité durable, la marque souhaite devenir un incontournable dans le dressing de ses clients.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium">Design</span>
+                            <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium">E-commerce</span>
+                            <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium">Mode</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <button class="text-primary-600 dark:text-primary-400 font-medium flex items-center group/btn hover:underline">
+                                <span>Voir les détails</span>
+                                <i class="fas fa-arrow-right ml-2 transform transition-transform group-hover/btn:translate-x-1"></i>
+                            </button>
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">Complété</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="group bg-white dark:bg-dark-card overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 reveal fade-bottom" style="animation-delay: 0.2s;">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="MISS GLAMOUR.jpg" alt="Projet MISSGLAMOUR" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+                            <span class="inline-block px-3 py-1 bg-accent-500 text-white rounded-full text-xs font-semibold mb-2 self-start">
+                                Plateforme Web
+                            </span>
+                            <h3 class="text-xl text-white font-bold mb-1">Projet MISSGLAMOUR</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-accent-500 transition-colors">
+                            Projet MISSGLAMOUR
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            MISSGLAMOUR aspire à devenir la plateforme de choix pour les femmes à la recherche de produits de qualité qui répondent à leurs besoins variés. En offrant une expérience d'achat en ligne exceptionnelle et en mettant en avant des produits soigneusement sélectionnés, la marque vise à inspirer et à autonomiser les femmes dans tous les aspects de leur vie.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-accent-100 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs font-medium">UX/UI</span>
+                            <span class="px-3 py-1 bg-accent-100 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs font-medium">Plateforme</span>
+                            <span class="px-3 py-1 bg-accent-100 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs font-medium">Beauté</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <button class="text-accent-600 dark:text-accent-400 font-medium flex items-center group/btn hover:underline">
+                                <span>Voir les détails</span>
+                                <i class="fas fa-arrow-right ml-2 transform transition-transform group-hover/btn:translate-x-1"></i>
+                            </button>
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 bg-blue-500 rounded-full"></span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">En cours</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+       
+        <div class="hidden md:block absolute top-20 right-20">
+            <div class="w-40 h-40 border-4 border-primary-200 dark:border-primary-900/20 rounded-full"></div>
+        </div>
+        <div class="hidden md:block absolute bottom-40 left-10">
+            <div class="w-20 h-20 bg-accent-200 dark:bg-accent-900/20 rounded-lg transform rotate-12"></div>
+        </div>
+    </section>
+
+    
+    <section id="skills" class="py-20 bg-white dark:bg-dark-surface relative clip-path-up">
+        <div class="container mx-auto px-4 md:px-6 pt-16">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800 dark:text-white">
+                    <span class="relative inline-block">
+                        <span class="absolute bottom-0 left-0 right-0 h-3 bg-accent-400/30 transform -skew-x-12"></span>
+                        <span class="relative">Mes Compétences</span>
+                    </span>
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Mes compétences techniques et professionnelles que j'ai développées au fil de mes études et projets.
+                </p>
+            </div>
+            
+           
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-dark-card dark:to-dark-bg p-6 rounded-xl shadow-lg group hover:shadow-xl transition-all duration-300 reveal fade-bottom">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fab fa-html5 text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">HTML5</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Maîtrise des balises sémantiques et de la structure de base d'une page web.</p>
+                        <div class="w-full bg-gray-200 dark:bg-dark-bg rounded-full h-2 mb-1">
+                            <div class="bg-primary-600 h-2 rounded-full progress-bar" data-width="85%"></div>
+                        </div>
+                        <div class="w-full flex justify-between text-xs text-gray-500 dark:text-gray-400">
+                            <span>Débutant</span>
+                            <span>Intermédiaire</span>
+                            <span>Avancé</span>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-dark-card dark:to-dark-bg p-6 rounded-xl shadow-lg group hover:shadow-xl transition-all duration-300 reveal fade-bottom" style="animation-delay: 0.1s;">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fab fa-css3-alt text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">CSS3</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Création de designs modernes et responsives avec Flexbox et Grid.</p>
+                        <div class="w-full bg-gray-200 dark:bg-dark-bg rounded-full h-2 mb-1">
+                            <div class="bg-primary-600 h-2 rounded-full progress-bar" data-width="80%"></div>
+                        </div>
+                        <div class="w-full flex justify-between text-xs text-gray-500 dark:text-gray-400">
+                            <span>Débutant</span>
+                            <span>Intermédiaire</span>
+                            <span>Avancé</span>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-dark-card dark:to-dark-bg p-6 rounded-xl shadow-lg group hover:shadow-xl transition-all duration-300 reveal fade-bottom" style="animation-delay: 0.2s;">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fab fa-js text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">JavaScript</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Développement d'interactivité et de fonctionnalités dynamiques pour les sites web.</p>
+                        <div class="w-full bg-gray-200 dark:bg-dark-bg rounded-full h-2 mb-1">
+                            <div class="bg-primary-600 h-2 rounded-full progress-bar" data-width="70%"></div>
+                        </div>
+                        <div class="w-full flex justify-between text-xs text-gray-500 dark:text-gray-400">
+                            <span>Débutant</span>
+                            <span>Intermédiaire</span>
+                            <span>Avancé</span>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-dark-card dark:to-dark-bg p-6 rounded-xl shadow-lg group hover:shadow-xl transition-all duration-300 reveal fade-bottom" style="animation-delay: 0.3s;">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fab fa-python text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Python</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Automatisation de tâches, analyse de données et développement backend.</p>
+                        <div class="w-full bg-gray-200 dark:bg-dark-bg rounded-full h-2 mb-1">
+                            <div class="bg-primary-600 h-2 rounded-full progress-bar" data-width="75%"></div>
+                        </div>
+                        <div class="w-full flex justify-between text-xs text-gray-500 dark:text-gray-400">
+                            <span>Débutant</span>
+                            <span>Intermédiaire</span>
+                            <span>Avancé</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+           
+            <div class="reveal">
+                <h3 class="text-2xl font-bold text-center mb-10 text-gray-800 dark:text-white">Compétences en Cybersécurité</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                   
+                    <div class="bg-white dark:bg-dark-card p-8 rounded-xl shadow-lg reveal fade-right">
+                      
+                        <div class="mb-8">
+                            <div class="flex justify-between mb-2">
+                                <h4 class="text-gray-800 dark:text-white font-medium">Analyse de vulnérabilités</h4>
+                                <span class="text-primary-600 dark:text-primary-400 font-bold">65%</span>
+                            </div>
+                            <div class="w-full h-3 bg-gray-200 dark:bg-dark-bg rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-primary-400 to-primary-600 rounded-full progress-bar" data-width="65%"></div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="mb-8">
+                            <div class="flex justify-between mb-2">
+                                <h4 class="text-gray-800 dark:text-white font-medium">Sécurité des réseaux</h4>
+                                <span class="text-primary-600 dark:text-primary-400 font-bold">70%</span>
+                            </div>
+                            <div class="w-full h-3 bg-gray-200 dark:bg-dark-bg rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-primary-400 to-primary-600 rounded-full progress-bar" data-width="70%"></div>
+                            </div>
+                        </div>
+                        
+                       
+                        <div class="mb-8">
+                            <div class="flex justify-between mb-2">
+                                <h4 class="text-gray-800 dark:text-white font-medium">Kali Linux</h4>
+                                <span class="text-primary-600 dark:text-primary-400 font-bold">75%</span>
+                            </div>
+                            <div class="w-full h-3 bg-gray-200 dark:bg-dark-bg rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-primary-400 to-primary-600 rounded-full progress-bar" data-width="75%"></div>
+                            </div>
+                        </div>
+                        
+                       
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <h4 class="text-gray-800 dark:text-white font-medium">Gestion des incidents</h4>
+                                <span class="text-primary-600 dark:text-primary-400 font-bold">60%</span>
+                            </div>
+                            <div class="w-full h-3 bg-gray-200 dark:bg-dark-bg rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-primary-400 to-primary-600 rounded-full progress-bar" data-width="60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="bg-white dark:bg-dark-card p-8 rounded-xl shadow-lg reveal fade-left">
+                        <h4 class="text-xl font-semibold mb-6 text-gray-800 dark:text-white">Outils & Technologies</h4>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                            <div class="flex flex-col items-center p-4 bg-gray-50 dark:bg-dark-bg rounded-lg hover:bg-gray-100 dark:hover:bg-dark-card transition-colors text-center">
+                                <i class="fab fa-linux text-2xl text-primary-600 dark:text-primary-400 mb-2"></i>
+                                <span class="text-gray-700 dark:text-gray-300 text-sm">Linux</span>
+                            </div>
+                            <div class="flex flex-col items-center p-4 bg-gray-50 dark:bg-dark-bg rounded-lg hover:bg-gray-100 dark:hover:bg-dark-card transition-colors text-center">
+                                <i class="fas fa-network-wired text-2xl text-primary-600 dark:text-primary-400 mb-2"></i>
+                                <span class="text-gray-700 dark:text-gray-300 text-sm">Réseaux</span>
+                            </div>
+                            <div class="flex flex-col items-center p-4 bg-gray-50 dark:bg-dark-bg rounded-lg hover:bg-gray-100 dark:hover:bg-dark-card transition-colors text-center">
+                                <i class="fas fa-shield-alt text-2xl text-primary-600 dark:text-primary-400 mb-2"></i>
+                                <span class="text-gray-700 dark:text-gray-300 text-sm">Wireshark</span>
+                            </div>
+                            <div class="flex flex-col items-center p-4 bg-gray-50 dark:bg-dark-bg rounded-lg hover:bg-gray-100 dark:hover:bg-dark-card transition-colors text-center">
+                                <i class="fas fa-code text-2xl text-primary-600 dark:text-primary-400 mb-2"></i>
+                                <span class="text-gray-700 dark:text-gray-300 text-sm">Scripting</span>
+                            </div>
+                            <div class="flex flex-col items-center p-4 bg-gray-50 dark:bg-dark-bg rounded-lg hover:bg-gray-100 dark:hover:bg-dark-card transition-colors text-center">
+                                <i class="fas fa-database text-2xl text-primary-600 dark:text-primary-400 mb-2"></i>
+                                <span class="text-gray-700 dark:text-gray-300 text-sm">SQL</span>
+                            </div>
+                            <div class="flex flex-col items-center p-4 bg-gray-50 dark:bg-dark-bg rounded-lg hover:bg-gray-100 dark:hover:bg-dark-card transition-colors text-center">
+                                <i class="fas fa-lock text-2xl text-primary-600 dark:text-primary-400 mb-2"></i>
+                                <span class="text-gray-700 dark:text-gray-300 text-sm">Cryptographie</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+       
+       <div class="reveal mt-16">
+        <h3 class="text-2xl font-bold text-center mb-10 text-gray-800 dark:text-white">Compétences Bureautiques</h3>
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white dark:bg-dark-card p-8 rounded-xl shadow-lg">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                   
+                    <div class="group bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/10 p-6 rounded-xl transition-transform duration-300 hover:-translate-y-2 text-center">
+                        <div class="w-16 h-16 mx-auto bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="far fa-file-word text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Microsoft Word</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Création et édition de documents professionnels, rapports et mémoires.</p>
+                        <div class="w-full bg-gray-200 dark:bg-dark-bg rounded-full h-2 mb-1">
+                            <div class="bg-blue-600 h-2 rounded-full progress-bar" data-width="90%"></div>
+                        </div>
+                        <div class="text-right text-xs text-gray-500 dark:text-gray-400">90%</div>
+                    </div>
+                    
+                    
+                    <div class="group bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/10 p-6 rounded-xl transition-transform duration-300 hover:-translate-y-2 text-center">
+                        <div class="w-16 h-16 mx-auto bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center text-green-600 dark:text-green-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="far fa-file-excel text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Microsoft Excel</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Analyse de données, tableaux croisés dynamiques et formules avancées.</p>
+                        <div class="w-full bg-gray-200 dark:bg-dark-bg rounded-full h-2 mb-1">
+                            <div class="bg-green-600 h-2 rounded-full progress-bar" data-width="85%"></div>
+                        </div>
+                        <div class="text-right text-xs text-gray-500 dark:text-gray-400">85%</div>
+                    </div>
+                    
+                    
+                    <div class="group bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/10 p-6 rounded-xl transition-transform duration-300 hover:-translate-y-2 text-center">
+                        <div class="w-16 h-16 mx-auto bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center text-red-600 dark:text-red-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="far fa-file-powerpoint text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Microsoft PowerPoint</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Création de présentations percutantes avec animations et transitions.</p>
+                        <div class="w-full bg-gray-200 dark:bg-dark-bg rounded-full h-2 mb-1">
+                            <div class="bg-red-600 h-2 rounded-full progress-bar" data-width="80%"></div>
+                        </div>
+                        <div class="text-right text-xs text-gray-500 dark:text-gray-400">80%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="hidden md:block absolute bottom-20 right-20">
+            <div class="w-40 h-40 border-4 border-accent-200 dark:border-accent-900/20 rounded-full"></div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-gray-50 dark:bg-dark-bg">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800 dark:text-white">
+                        <span class="relative inline-block">
+                            <span class="absolute bottom-0 left-0 right-0 h-3 bg-primary-400/30 transform -skew-x-12"></span>
+                            <span class="relative">Contactez-moi</span>
+                        </span>
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                        Envie de discuter d'un projet ou simplement de me contacter ? N'hésitez pas à m'envoyer un message.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                   
+                    <div class="bg-white dark:bg-dark-card p-8 rounded-xl shadow-lg reveal fade-right">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">Informations de contact</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400 mr-4 shrink-0">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-1">Email</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">khadidiatoukanekoulibaly@.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400 mr-4 shrink-0">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-1">Téléphone</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">+221 XX XXX XX XX</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400 mr-4 shrink-0">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-1">Adresse</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">Dakar, Sénégal</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Retrouvez-moi sur</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://facebook.com/votreprofil" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-dark-bg flex items-center justify-center text-primary-600 dark:text-primary-400 hover:bg-primary-600 hover:text-white dark:hover:bg-primary-600 transition-all duration-300">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://twitter.com/votreprofil" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-dark-bg flex items-center justify-center text-primary-600 dark:text-primary-400 hover:bg-primary-600 hover:text-white dark:hover:bg-primary-600 transition-all duration-300">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://instagram.com/votreprofil" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-dark-bg flex items-center justify-center text-primary-600 dark:text-primary-400 hover:bg-primary-600 hover:text-white dark:hover:bg-primary-600 transition-all duration-300">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://tiktok.com/@votreprofil" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-dark-bg flex items-center justify-center text-primary-600 dark:text-primary-400 hover:bg-primary-600 hover:text-white dark:hover:bg-primary-600 transition-all duration-300">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+            
+                    <div class="bg-white dark:bg-dark-card p-8 rounded-xl shadow-lg reveal fade-left">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">Envoyez-moi un message</h3>
+                        <form action="#" method="post">
+                            <div class="mb-6">
+                                <label for="name" class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-user text-primary-600 dark:text-primary-400 mr-2"></i>
+                                        <span>Nom</span>
+                                    </div>
+                                </label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-800 dark:text-white text-base">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="email" class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-envelope text-primary-600 dark:text-primary-400 mr-2"></i>
+                                        <span>Email</span>
+                                    </div>
+                                </label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-800 dark:text-white text-base">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-comment-alt text-primary-600 dark:text-primary-400 mr-2"></i>
+                                        <span>Message</span>
+                                    </div>
+                                </label>
+                                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-800 dark:text-white resize-y text-base"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="glow w-full py-3 px-6 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 text-white font-medium rounded-lg transition-all duration-300">
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-paper-plane mr-2"></i>
+                                    <span>Envoyer</span>
+                                </div>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="gradient-bg text-white py-10">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#hero" class="text-2xl font-bold flex items-center gap-2">
+                        <span class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-primary-600">KK</span>
+                        <span>Khadidiatou</span>
+                    </a>
+                    <p class="mt-2 text-white/80 max-w-md">
+                        Étudiante en génie informatique passionnée par la cybersécurité et le développement web.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col items-center md:items-end">
+                    <p class="text-white/80 mb-2">© 2023 KHADIDIATOU KANE KOULIBALY. Tous droits réservés.</p>
+                    <a href="#hero" class="mt-4 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="fas fa-arrow-up"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+       
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+        
+        themeToggle.addEventListener('click', toggleTheme);
+        mobileThemeToggle.addEventListener('click', toggleTheme);
+        
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            document.body.classList.toggle('menu-open');
+        });
+        
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                document.body.classList.remove('menu-open');
+            });
+        });
+        
+        const navbar = document.getElementById('navbar');
+        
+        function updateNavbar() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white', 'dark:bg-dark-bg', 'shadow-md');
+            } else {
+                navbar.classList.remove('bg-white', 'dark:bg-dark-bg', 'shadow-md');
+            }
+        }
+        
+        window.addEventListener('load', updateNavbar);
+        window.addEventListener('scroll', updateNavbar);
+        
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        
+        function initProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-bar');
+            
+            progressBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 500);
+            });
+        }
+        
+        const cursor = document.getElementById('cursor');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+        });
+        
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+        });
+        
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea');
+        
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.width = '30px';
+                cursor.style.height = '30px';
+                cursor.style.backgroundColor = 'rgba(99, 102, 241, 0.2)';
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursor.style.backgroundColor = 'rgba(99, 102, 241, 0.5)';
+            });
+        });
+        
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', () => {
+            revealOnScroll();
+            initProgressBars();
+            
+            if ('ontouchstart' in window) {
+                cursor.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
